@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<!-- 使用本站代码请注明出处。 by: siitake.cn -->
+<html lang="zh">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="referrer" content="never">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="description" content="香菇的不知道有什么用的网站">
+  <meta name="keywords" content="香菇社长,香菇,香菇大盗,siitake,kinoko">
+  <link rel="icon" href="./src/favicon.png">
+  <link rel="apple-touch-icon" href="./src/favicon.png"/>
+  <title>香菇备忘录 Plus</title>
+  <style>
+    * { margin: 0; padding: 0; font-family: Arial, sans-serif; }
+    html { height: 100vh; }
+    body { font-size: 1em; }
+    .main { margin-top: 35vh; margin-left: calc((100vw - 320px) / 3); transition: margin .5s, opacity .5s; }
+    .m-hidden { opacity: 0; }
+    .logo { width: 150px; height: 50px; background-color: black; border-radius: 3px; }
+    .logo::before { content: "SIITAKE"; position: relative; font-size: 36px; line-height: 50px; top: 0; left: -2px; color: white; }
+    .logo::after { content: ""; display: block; opacity: 0; transition: opacity .5s; position: relative; width: 100px; height: 55px; top: -99px; left: -4px; background-image: url('./src/xiaobing.gif'); background-size: cover; }
+    .logo:hover::after { opacity: 1; }
+    .desc { margin: 15px 0; color: black; font-size: 16px; line-height:20px; }
+    .nav { text-align: center; font-size: 14px; text-align: left; }
+    .nav ul { list-style: none; }
+    .nav li { display: inline-block; margin-right: 5px; }
+    .nav a { color: black; transition: color .5s; }
+    .nav a:hover { color: gray; }
+    .nav section li a { text-decoration: none; }
+    .footer{ width: 100vw; height: 100px; position: fixed; bottom: 0; text-align: center; color: whitesmoke; transition: color .5s; }
+    .footer:hover { color: gray; }
+    .icp { font-size: 10px; line-height: 100px; }
+    .antiselect { user-select: none; -ms-user-select: none; -moz-user-select: none; -webkit-user-select: none; }
+    
+    .link { position: fixed; top: 0; left: 0; width: calc(100vw - 40px); height: calc(100vh - 40px); background-color: rgba(255, 255, 255, .5); padding: 20px; overflow-y: scroll; transition: opacity .5s, top .5s; -webkit-overflow-scrolling: touch; }
+    .l-back { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: whitesmoke; background-size: cover; background-position: center; filter: blur(100px); opacity: 1; transition: background .25s, opacity .5s, top .5s; }
+    .l-hidden { top: 100vh; opacity: 0; }
+    .l-search-form { position: relative; width: 100%; padding: 0; transition: padding .5s; }
+    .l-search-form #search { display: block; width: calc(100vw - 40px); max-width: 800px; margin: auto; height: 0; border: none; border-radius: 25px; text-align: center; font-size: 12px; line-height: 50px; background-color: rgba(255, 255, 255, .6); box-shadow: 0 0 3px rgba(155, 155, 155, .6); transition: height .5s, font-size .5s; }
+    .l-search-form #search:focus { border-radius: 25px; border-color: rgba(66, 204, 255, 0.8); outline: 0; outline: thin dotted \9; box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(66, 204, 255, 0.6); }
+    .l-close, .l-search { position: fixed; top: 20px; width: 40px; height: 40px; z-index: 9999; filter: grayscale(100%); transition: filter .3s; }
+    .l-close { right: 20px; }
+    .l-close:hover, .l-search:hover { filter: grayscale(0%); }
+    .lc-1, .lc-2 { display: block; position: absolute; top: 15px; left: 0px;  width: 40px; height: 10px; background-color: #FF6666; border-radius: 3px; transition: background .5s; }
+    .lc-1 { transform: rotate(45deg); }
+    .lc-2 { transform: rotate(-45deg); }
+    .l-search { right: 80px; }
+    .ls-1, .ls-2 { display: block; position: absolute; transition: background .5s; }
+    .ls-1 { width: 10px; height: 10px; top: 2px; left: 2px; border: 10px solid #66CCFF; border-radius: 20px; }
+    .ls-2 { width: 20px; height: 10px; right: 2px; bottom: 7px; background: #66CCFF; transform: rotate(45deg); border-radius: 3px; }
+    .l-group { width: 100%; }
+    .l-title { margin: 20px; }
+    .l-box { width: 100%; }
+    .l-box:before, .l-box:after { content: ''; display: table; }
+    .l-box:after { clear: both; }
+    .l-item { position: relative; float: left; width: calc(10% - 40px); height: 64px; padding: 10px; margin: 10px; border-radius: 15px; transition: background .5s; }
+    .l-item:hover { background-color: rgba(255, 255, 255, .3); box-shadow: 0 0 3px rgba(155, 155, 155, .6); }
+    .li-logo { display: inline-block; float: left; width: 64px; height: 64px; background-color: white; background-size: cover; background-position: center; border-radius: 32px; transition: transform .5s, border-radius .5s, box-shadow .5s; }
+    .l-item:hover .li-logo { transform: rotate(0deg); border-radius: 32px; box-shadow: 0 0 3px rgba(155, 155, 155, .6); animation: liLogoShake 1.5s infinite ease; }
+    .l-item h2, .l-item span { margin-left: 5px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .l-item h2 { display: inline-block; float: left; width: calc(100% - 70px); height: 38px; line-height: 38px; font-size: 22px; font-weight: normal; }
+    .l-item span { display: inline-block; float: left; max-width: calc(100% - 70px); }
+    .l-icon { padding-left: 20px; background-size: auto 90%; background-repeat: no-repeat; background-position:left; }
+    
+    .qrCode { display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(0, 0, 0, .9); }
+    .qrCode #qrImg { display: block; width: 260px; height: 260px; background-color: white; border: 15px solid white; border-radius: 10px; margin-top: calc(40vh - 130px); margin-left: auto; margin-right: auto; }
+    .qrCode p { display: block; width: 360px; margin: 20px auto; font-size: 20px; color: white; text-align: center; }
+    .qrCode span { font-size: 12px; line-height: 20px; color: whitesmoke; text-align: center; }
+    
+    #maomao {position: fixed; bottom: 40px; right: -5px; width: 57px; height: 70px; background-image: url(./src/mao.svg); background-position: center; background-size: cover; background-repeat: no-repeat; transition: background .3s;}
+    #maomao:hover {background-position: 60px 50%;}
+
+    @media only screen and (min-width:767px) {
+      #link::-webkit-scrollbar-track-piece{ background: rgba(115, 115, 115, 0); }
+      #link::-webkit-scrollbar{ width: 6px; height: 6px; }
+      #link::-webkit-scrollbar-thumb{ height: 40px; border-radius: 4px; background-color: #A5A5A5; }
+      #link::-webkit-scrollbar-thumb:hover{ background-color: #66CCFF; }
+    }
+
+    @media screen and (max-width: 3455px) { .l-item { width: calc(11.11% - 40px); } }
+    @media screen and (max-width: 3071px) { .l-item { width: calc(12.5% - 40px); } }
+    @media screen and (max-width: 2687px) { .l-item { width: calc(14.28% - 40px); } }
+    @media screen and (max-width: 2303px) { .l-item { width: calc(16.66% - 40px); } }
+    @media screen and (max-width: 1919px) { .l-item { width: calc(20% - 40px); } }
+    @media screen and (max-width: 1535px) { .l-item { width: calc(25% - 40px); } }
+    @media screen and (max-width: 1151px) { .l-item { width: calc(33.33% - 40px); } }
+    @media screen and (max-width: 767px) { .l-item { width: calc(50% - 40px); } }
+    @media screen and (max-width: 512px) { .l-item { width: calc(100% - 40px); } }
+    
+    @keyframes liLogoShake {
+      0% { transform: rotate(0deg); }
+      20% { transform: rotate(7deg); }
+      60% { transform: rotate(-7deg); }
+      80% { transform: rotate(0deg); }
+      100% { transform: rotate(0deg); }
+    }
+  </style>
+</head>
+<body class="antiselect">
+  <div class="main" id="main">
+    <div class="logo" onmouseover="plaaaay('miao')"></div>
+    <div class="desc">
+      <p>PUTONG DE SIITAKE, MODEI FEELING.</p>
+    </div>
+    <ul class="nav">
+      <!--li><a target="_blank" href="https://blog.siitake.cn">BLOG</a></li-->
+      <li><a href="javascript:;" style="color: black;" onclick="swLinks(1)">LET'S GO!</a></li>
+      <section style="margin: 10px 0;">
+      	<li><a target="_blank" href="http://beian.miit.gov.cn">陕ICP备17001968号-1</a></li>
+      	<li><a href="https://icp.gov.moe/?keyword=20221968" target="_blank">萌ICP备20221968号</a></li>
+      </section>
+    </ul>
+  </div>
+  <div class="l-back l-hidden" id="l-back"></div>
+  <div class="link l-hidden" id="link">
+    <div class="l-search-form">
+        <input type="text" id="search" name="search" placeholder="搜索本站 or 搜狗[↲] 必应[↓]" />
+    </div>
+    <div class="l-close" onclick="swLinks(0);">
+      <span class="lc-1"></span>
+      <span class="lc-2"></span>
+    </div>
+    <div class="l-search" id="l-search" onclick="showSearch()">
+      <span class="ls-1"></span>
+      <span class="ls-2"></span>
+    </div>
+  </div>
+  <div id="qrCode" class="qrCode" onclick="hideQr()">
+    <section id="qrImg">
+      <img src="./src/qrcode.png"/>
+    </section>
+    <p id="qrDesc" title="请扫码"></p>
+  </div>
+  <div style="display: none;">
+    <!-- 没错！就是你！准备好了吗？ ///// 【泠鸢】交织together【单人版】 ///// https://www.bilibili.com/video/av15770997 -->
+    <audio id="ruready" src="./src/are_you_ready.ogg" preload="auto">您的浏览器可能不支持音频标签。</audio>
+    <!-- 喵~ ///// 点击领取你的猫娘女友！总有一款适合你！~ ///// https://www.bilibili.com/video/av55305494 -->
+    <audio id="miao" src="./src/miao_cocoa.ogg" preload="auto">您的浏览器可能不支持音频标签。</audio>
+  </div>
+  <div id="maomao" onMouseOut="duoMaomao()"></div>
+<script src="./src/jquery.min.js"></script>
+<script src="./src/qrcode.js"></script>
+<script>
+  var plaaaay = function(id) {
+    $('#' + id)[0].play();
+  }
+  var swLinks = function(st, play = true) {
+    if(st == 1) {
+      $('#link').removeClass('l-hidden');
+      $('#l-back').removeClass('l-hidden');
+      $('#main').addClass('m-hidden');
+      if(play) {
+        plaaaay('ruready');
+      }
+    } else if(st == 0) {
+      $('#link').addClass('l-hidden');
+      $('#l-back').addClass('l-hidden');
+      $('#main').removeClass('m-hidden');
+    }
+  }
+  var getLinks = function(url, keywords = false) {
+    var isSearch = keywords ? true : false;
+    var t = Date.parse(new Date()).toString().substr(0, 8);
+    $.getJSON(url, {t: t}, function(result) {
+      $.each(result, function(i, obj) {
+        $.each(obj, function(n, links) {
+          var countSearchResult = 0;
+          var l_group = $('<div class="l-group"></div>');
+          var l_title = $('<div class="l-title"><h1>' + n + '</h1></div>');
+          l_group.append(l_title);
+          var l_box = $('<div class="l-box"></div>');
+          //links.sort(function(){ return 0.5 - Math.random() }); //random
+          $.each(links, function(j, link) {
+            var isShow = true;
+            if(isSearch) {
+              var beSearchStr = link.name + link.href + link.desc;
+              isShow = (beSearchStr.search(keywords) >= 0);
+            }
+            var lil_url = link.logo != null ? link.logo : './src/loading.svg';
+            var lid_text = link.desc != null ? link.desc : '暂无描述 ┑(￣Д ￣)┍';
+            var l_item = $('<div class="l-item"></div>');
+            l_item.attr("title", '✦ ' + link.name + '\n✧ ' + lid_text + '\n✧ ' + link.href);
+            l_item.bind('click', function(){
+              if(link.func) {
+                var func = new Function('n,h,d,l', link.func);
+                func(link.name,link.href,link.desc,link.logo);
+              }else{
+                window.open(link.href + (link.noUtm === undefined ? '?utm_source=siitake.cn' : ''));
+              }
+            }).bind("contextmenu", function () {
+              showQr(link.href + (link.noUtm === undefined ? '?qrCode=siitake.cn' : ''), link.name + '<br><span>' + lid_text + '</span>', lil_url);
+              return false;
+            });
+            var li_logo = $('<div class="li-logo"></div>');
+            li_logo.css('background-image', 'url(' + lil_url + ')');
+            l_item.append(li_logo);
+            var li_name = $('<h2>' + link.name + '</h2>');
+            l_item.append(li_name);
+            var li_desc = $('<span>' + lid_text + '</span>');
+            l_item.append(li_desc);
+            l_item.bind('mouseover', function(){
+              $('.l-back').css('background-image', 'url(' + lil_url + ')');
+            });
+            if(isShow) {
+              countSearchResult += 1;
+              l_box.append(l_item);
+            }
+          });
+          l_group.append(l_box);
+          if(countSearchResult > 0) {
+            $('#link').append(l_group);
+          }
+        });
+      });
+    });
+  }
+  var randomNum = function(minNum, maxNum) {
+    switch(arguments.length){
+      case 1:
+        return parseInt(Math.random() * minNum + 1, 10);
+        break;
+      case 2:
+        return parseInt(Math.random() * (maxNum - minNum + 1) + minNum, 10);
+        break;
+      default:
+        return 0;
+        break;
+    }
+  }
+  var showQr = function(url, txt, logo) {
+      var qrnode = new AraleQRCode({
+        render: 'canvas',
+        correctLevel: 2,
+        text: url,
+        size: 260,
+        background: '#fff',
+        foreground: '#000',
+        pdground: '#f33',
+        image : logo,
+        imageSize : 32
+      });
+      $('#qrImg').html(qrnode);
+      $('#qrCode').css('display', 'block');
+      $('#qrDesc').html(txt);
+  }
+  var hideQr = function(url) {
+      $('#qrCode').css('display', 'none');
+  }
+  //躲猫猫的「猫猫」形象出自游戏「Don't catch Cats」(https://apps.apple.com/app/dont-catch-cats/id1375311035)。
+  var duoMaomao = function() {
+    var maomao = $('#maomao');
+    maomao.css('bottom', randomNum(5, 80) + 'vh');
+  }
+  var linkCache;
+  var showSearch = function() {
+      $('#search').css('height', '50px').css('font-size', '22px');
+      $('#search').parent().css('padding', '50px 0 20px 0');
+      $('#l-search').attr('onclick', 'hideSearch()');
+      linkCache = $('.l-group');
+  }
+  var hideSearch = function() {
+      $('#search').removeAttr('style');
+      $('#search').parent().removeAttr('style');
+      $('#l-search').attr('onclick', 'showSearch()');
+      $('.l-group').detach();
+      $('#search').val('');
+      $('#link').append(linkCache);
+  }
+  var doSearch = function() {
+      var keywords = $('#search').val();
+      $('.l-group').detach();
+      getLinks('./links.json', keywords);
+  }
+  $(function(){
+    getLinks('./links.json');
+    if(location.hash == '#link' || location.hash == '#search') {
+      swLinks(1, false);
+      if(location.hash == '#search') {
+          setTimeout('showSearch()', 520);
+      }
+    }
+    var doSearchTimeOut = null;
+    $('#search').bind('input propertychange',function() {
+      clearTimeout(doSearchTimeOut);
+      doSearchTimeOut = setTimeout('doSearch()', 500);
+    }).keydown(function(event){
+      var keywords = $.trim($('#search').val());
+      if(keywords != '') {
+        switch(event.keyCode){
+          case 13:
+            location.href = 'https://www.sogou.com/web?ie=UTF-8&query=' + encodeURI(keywords);
+            break;
+          case 40:
+            location.href = 'https://cn.bing.com/search?q=' + encodeURI(keywords);
+            break;
+          case 38:
+            location.href = 'http://' + keywords;
+            break;
+          default:
+            //console.log(event.keyCode);
+        }  
+      }
+    });
+  });
+  console.info("%c欢迎访问香菇的主页(●ˇ∀ˇ●)", "padding: 10px 10px 10px 0px; font-family: helvetica; font-size: 20px; line-height: 12px;");
+  console.info("%c您可以添加Hash直达下列功能：\n链接：https://siitake.cn/#link\n搜索：https://siitake.cn/#search", "padding: 10px 10px 10px 0px; font-family: helvetica; font-size: 16px;");
+  console.info("%c忘了哪年3月29日更新：调整背景层及部分样式，修复部分浏览器下鼠标指针在空白位置时鼠标滚轮翻页无效的问题。", "padding: 10px 10px 10px 0px; font-family: helvetica; font-size: 16px; line-height: 20px; color: red;");
+</script>
+</body>
+</html>

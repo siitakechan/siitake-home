@@ -1,0 +1,127 @@
+[
+  {
+    "导航 ♪（＾∀＾●）ﾉ": [
+      {
+        "name": "Bilibili",
+        "href": "https://space.bilibili.com/",
+        "desc": "哔哩哔哩弹幕视频网",
+        "logo": "./icons/bilibili.jpg"
+      },
+      {
+        "name": "OSCHINA",
+        "href": "https://www.oschina.net/",
+        "desc": "全国最大的同性交友社区",
+        "logo": "./icons/oschina.net.jpg"
+      },
+      {
+        "name": "IT之家",
+        "href": "https://www.ithome.com/",
+        "desc": "海(shui)的味道，我知道",
+        "logo": "./icons/ithome.com.jpg"
+      },
+      {
+        "name": "腾讯云",
+        "href": "https://cloud.tencent.com/",
+        "desc": "腾讯云官方网站",
+        "logo": "./icons/cloud.tencent.com.jpg"
+      },
+      {
+        "name": "微信读书",
+        "href": "https://weread.qq.com/web/shelf",
+        "desc": "正版书籍小说免费阅读",
+        "func": "window.open(h, '_blank', 'height=750, width=690, top=50, left=50, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, status=no, z-look=yes')",
+        "logo": "./icons/weread.qq.com.png"
+      },
+      {
+        "name": "操作指南",
+        "href": "鼠标单击或触屏点击图标即可跳转网页或执行代码；\n鼠标右击或触屏长按可调出二维码，点击空白部分关闭二维码；\n点击右上角放大镜图标搜索本站；\n猫猫技能：躲猫猫。",
+        "desc": "此页面的简单操作提示",
+        "logo": "./icons/help.png",
+        "func": "plaaaay('miao');console.info(h);alert(h);",
+        "noUtm": ""
+      }
+    ],
+    "搬砖 ...((/- -)/": [
+      {
+        "name": "NOOK.LTD",
+        "href": "https://nook.ltd/",
+        "desc": "NO FREELOADING!",
+        "logo": "./icons/nook.ltd.jpg"
+      },
+      {
+        "name": "干饭",
+        "href": "https://nook.ltd/ganfan",
+        "desc": "自由干饭许可证生成器",
+        "logo": "./icons/fan.jpg",
+        "noUtm": ""
+      },
+      {
+        "name": "微信传文件",
+        "href": "https://filehelper.weixin.qq.com/",
+        "desc": "微信文件传输助手网页版",
+        "func": "window.open(h, '_blank', 'height=900, width=767, top=50, left=50, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, status=no, z-look=yes')",
+        "logo": "./icons/filehelper.png"
+      }
+    ],
+    "香菇！ ヽ(•̀ω•́ )ゝ": [
+      {
+        "name": "Blog",
+        "href": "https://blog.siitake.cn/",
+        "desc": "智障少年蠢香菇。",
+        "logo": "./icons/blog.jpg"
+      },
+      {
+        "name": "Photograph",
+        "href": "https://photo.siitake.cn/",
+        "desc": "演示站、售卖头发…",
+        "logo": "./icons/xianggu_128.png"
+      },
+      {
+        "name": "不再菇单计划α",
+        "href": "http://fund.siitake.cn/",
+        "desc": "我们伸出圆手，面对困难，愿每个生命都不再菇单。",
+        "logo": "./icons/bzgd.jpg"
+      },
+      {
+        "name": "Weibo",
+        "href": "https://weibo.com/u/6185985582",
+        "desc": "普通的香菇并没有成精。",
+        "logo": "./icons/weibo.jpg"
+      },
+      {
+        "name": "GuliLive",
+        "href": "https://live.bilibili.com/64285",
+        "desc": "香菇的闲置直播间",
+        "logo": "./icons/bililive.jpg"
+      },
+      {
+        "name": "提词器",
+        "href": "https://siitake.cn/tools/tcq",
+        "desc": "适配平板(横屏)和电脑屏幕的简易提词器",
+        "logo": "./icons/tcq.png",
+        "noUtm": ""
+      },
+      {
+        "name": "干饭(4K)",
+        "href": "https://siitake.cn/tools/fan",
+        "desc": "自由干饭许可证生成器",
+        "logo": "./icons/fan.jpg",
+        "noUtm": ""
+      }
+    ],
+    "大佬们 (｡･∀･)ﾉﾞ": [
+      {
+        "name": "泽泽社长",
+        "href": "https://kpi.xlog.app",
+        "desc": "青空之下，人间未满，为言为空，不止摸鱼",
+        "logo": "./icons/zezeshe.com.jpg"
+      },
+      {
+        "name": "日式JK",
+        "href": "https://jk.rs/",
+        "desc": "专注于分享各式JK的网站",
+        "logo": "./icons/jk.rs.jpg"
+      }
+    ]
+  }
+]
